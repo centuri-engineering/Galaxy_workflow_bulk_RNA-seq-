@@ -34,19 +34,15 @@ Then enter your email address, password and username. Then click on “Create”
 
 A history is a kind of dashboard in Galaxy. This is where the workflow input files and output files are stored. It is recommended to create a new history for each run.
 To create a new history, click on the "+" symbol located next to "History" at the top right of the page.
-![galaxy1.png](/software_dev/galaxy1.png)
 
 To modify the name of the new history created, click on the pencil. You can also add a description then click "Save".
-![galaxy2.png](/software_dev/galaxy2.png)
 
 
 ### Step 4: Add files to history
 
 To add files to the history, click on "Upload Data" at the top left of the page.
-![galaxy3.png](/software_dev/galaxy3.png)
 
 You can upload the files from your computer by clicking on "Choose local files" or paste your files directly by clicking "Paste/Fetch data".
-![galaxy4.png](/software_dev/galaxy4.png)
 
 Add the following files to the history:
 - fastq files in .fastq format
@@ -76,17 +72,15 @@ Add the following files to the history:
   PLEASE NOTE, the separators must be tabs and the file must be saved in .tsv format.
   
 When you have added all these files click on start to start downloading into the history.
-![galaxy5.png](/software_dev/galaxy5.png)
 
 Once the files have finished downloading, the files appear green in the history.
 
 ### Step 5: Select workflow
 
 To select a workflow and launch it, click on the “Workflow” tab at the top in the middle of the page (next to the house logo).
-![galaxy6.png](/software_dev/galaxy6.png)
 
 Left click on the workflow then click on “Edit”.
-![galaxy7.png](/software_dev/galaxy7.png)
+
 
 ### Step 6: Adjust workflow parameters
 
@@ -101,12 +95,10 @@ Then click on the arrow at the top right of the web page to access the other set
 - Trimmomatic setting :
 To modify the parameters of the Trimmomatic tool, click on the Trimmomatic section to expand the parameters.
 (Illuminaclip, Leading, Trailing, Slidingwindow, Minlen)
-![galaxy16.png](/software_dev/galaxy16.png)
-![galaxy18.png](/software_dev/galaxy18.png)
+
 - Cpm and filter setting :
 To modify the parameters of the cpm (Counts Per Million) tool, click on the cpm section to expand the parameters.
 “thread-sample” parameter: MANDATORY : Please enter the number of samples per condition in the “thread-sample” parameter.
-![galaxy9.png](/software_dev/galaxy9.png)
 
 "thresh_cpm" parameter: cpm threshold to filter the low expressed genes
 
@@ -114,7 +106,6 @@ To modify the parameters of the cpm (Counts Per Million) tool, click on the cpm 
 - Differential expression setting :
 To modify the parameters of the Deseq2 tool, click on the Deseq2 section to expand the parameters.
 "thread" parameter: number of threads
-![galaxy17.png](/software_dev/galaxy17.png)
 
 To modify the parameters of the Deseq2_Report tool, click on the Deseq2_Report section to expand the parameters.
 
@@ -123,18 +114,15 @@ To modify the parameters of the Deseq2_Report tool, click on the Deseq2_Report s
 "FCcutoff" parameter: foldchange threshold
 "pCcutoff" parameter: qvalue threshold
 "nbpval" parameter: number of genes to select with the best p-value
-![galaxy20.png](/software_dev/galaxy20.png)
 
 - Intersection setting :
 For each comparison, select the name of the condition which will be the reference and the name of the condition which will be considered as the mutant for the first file.
 Also select whether these are up or down regulated genes.
 Do the same for the second file.
-![galaxy21.png](/software_dev/galaxy21.png)
 
 ### Step 7: Execute workflow
 
 To run the workflow, return to the top of the web page then click on “Run workflow” (Dark blue button at the top right)
-![galaxy10.png](/software_dev/galaxy10.png)
 
 The output files will be displayed progressively in the history
 
