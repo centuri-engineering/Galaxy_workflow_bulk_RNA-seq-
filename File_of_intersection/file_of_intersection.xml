@@ -1,0 +1,15 @@
+<tool id="File_of_intersection" name="File_of_intersection" version="1.0+galaxy1" python_template_version="3.5" profile="21.05">
+    <description> Creating a file for the Intersect tool </description>
+    <requirements>
+        <requirement type="package" version="4.0">r-base</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript /media/audrey/data/galaxy/tools/newTools/File_of_intersection/file_of_intersection.R --galaxy_input $metadata_table --galaxy_output $output_file
+    ]]></command>
+    <inputs>
+        <param name="metadata_table" type="data" format="tabular" label="Metadata_table"/>
+    </inputs>
+    <outputs>
+        <data name="output_file.tsv" format="tabular" label="output_file_intersection" />
+    </outputs>
+</tool>
