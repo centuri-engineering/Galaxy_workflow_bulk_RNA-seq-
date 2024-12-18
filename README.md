@@ -4,6 +4,7 @@ Galaxy tools needed to run Thomas Vannier's differential expression workflow on 
 ## Author
 
 Thomas Vannier (@metavannier), https://centuri-livingsystems.org/t-vannier/
+
 Audrey Comte (@AudreyComte), https://centuri-livingsystems.org/a-comte/
 
 ## About
