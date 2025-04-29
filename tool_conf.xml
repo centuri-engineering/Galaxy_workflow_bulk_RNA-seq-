@@ -139,6 +139,9 @@
   <section name="Intersection" id="Intersection">
     <tool file="newTools/Intersection/intersection.xml" />
   </section>
+  <section name="Intersection_Shruti" id="Intersection_Shruti">
+    <tool file="newTools/Intersection/intersection_Shruti.xml" />
+  </section>
   <!--
   <section id="interactivetools" name="Interactive tools">
     <tool file="interactive/interactivetool_askomics.xml" />
