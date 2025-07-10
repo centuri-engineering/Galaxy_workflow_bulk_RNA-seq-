@@ -567,10 +567,6 @@
                     "id": 11,
                     "output_name": "signif_down_regulated"
                 },
-                "input_files_name": {
-                    "id": 11,
-                    "output_name": "file_name_diffexp"
-                },
                 "input_files_up": {
                     "id": 11,
                     "output_name": "signif_up_regulated"
@@ -578,6 +574,18 @@
                 "metadata_table": {
                     "id": 3,
                     "output_name": "output"
+                },
+                "name_file_all_genes_stats": {
+                    "id": 11,
+                    "output_name": "file_name_diffexp"
+                },
+                "name_file_down": {
+                    "id": 11,
+                    "output_name": "file_name_diffexp"
+                },
+                "name_file_up": {
+                    "id": 11,
+                    "output_name": "file_name_diffexp"
                 }
             },
             "inputs": [],
@@ -586,11 +594,11 @@
             "outputs": [
                 {
                     "name": "common_genes",
-                    "type": "input"
+                    "type": "collection"
                 },
                 {
                     "name": "stat_common_genes",
-                    "type": "input"
+                    "type": "collection"
                 }
             ],
             "position": {
@@ -599,21 +607,26 @@
             },
             "post_job_actions": {},
             "tool_id": "Intersection",
-            "tool_state": "{\"file_1\": {\"file_1_ref\": null, \"file_1_mutant\": null, \"up_or_down_1\": \"up\"}, \"file_2\": {\"file_2_ref\": null, \"file_2_mutant\": null, \"up_or_down_2\": \"up\"}, \"input_all_genes_stats\": {\"__class__\": \"ConnectedValue\"}, \"input_files_down\": {\"__class__\": \"ConnectedValue\"}, \"input_files_name\": {\"__class__\": \"ConnectedValue\"}, \"input_files_up\": {\"__class__\": \"ConnectedValue\"}, \"metadata_table\": {\"__class__\": \"ConnectedValue\"}, \"name_file_all_genes_stats\": {\"__class__\": \"RuntimeValue\"}, \"name_file_down\": {\"__class__\": \"RuntimeValue\"}, \"name_file_up\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"params1\": {\"ref\": null, \"mutant\": null, \"regulation\": \"up\"}, \"params2\": {\"ref\": null, \"mutant\": null, \"regulation\": \"up\"}, \"input_all_genes_stats\": {\"__class__\": \"ConnectedValue\"}, \"input_files_down\": {\"__class__\": \"ConnectedValue\"}, \"input_files_up\": {\"__class__\": \"ConnectedValue\"}, \"metadata_table\": {\"__class__\": \"ConnectedValue\"}, \"name_file_all_genes_stats\": {\"__class__\": \"ConnectedValue\"}, \"name_file_down\": {\"__class__\": \"ConnectedValue\"}, \"name_file_up\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0+galaxy1",
             "type": "tool",
             "uuid": "884fd521-8633-4ddd-bea8-1485908971b9",
-            "when": null,
             "workflow_outputs": [
                 {
-                    "label": "stat_common_genes",
+                    "label": "Common Genes",
+                    "output_name": "common_genes",
+                    "uuid": "297a3476-9826-4842-859c-ed07e3d30495"
+                },
+                {
+                    "label": "Statistics",
                     "output_name": "stat_common_genes",
                     "uuid": "33f85617-6887-4eed-8018-66a45e95e08f"
                 }
             ]
         }
-    },
-    "tags": [],
-    "uuid": "8d5000ad-ba89-43c7-abd2-dc133bd449b7",
-    "version": 5
+    }
 }
+
+
+
+
