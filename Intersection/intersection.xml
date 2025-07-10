@@ -1,73 +1,76 @@
-<tool id="Intersection" name="Intersection" version="1.0+galaxy1" python_template_version="3.5" profile="21.05">
-    <description>Presence or absence of differential expressed genes in different comparisons</description>
-    <requirements>
-        <requirement type="package" version="4.0">r-base</requirement>
-    </requirements>
-    <command detect_errors="exit_code"><![CDATA[
-        Rscript /media/audrey/data/galaxy/tools/newTools/Intersection/intersection.R --output_path1 common_genes --output_path2 stat_common_genes --galaxy_input_files_2 $input_files_down --galaxy_input_files_3 $input_all_genes_stats --galaxy_input_files_1 $input_files_up --galaxy_param1 $name_file_all_genes_stats --galaxy_param2 $name_file_down --galaxy_param3 $name_file_up --galaxy_param4 $metadata_table --galaxy_input1 $file_1_ref --galaxy_input2 $file_1_mutant --galaxy_input3 $up_or_down_1 --galaxy_input4 $file_2_ref --galaxy_input5 $file_2_mutant --galaxy_input6 $up_or_down_2
-    ]]></command>
-    <inputs>
-        <param type="data" multiple="true" format="tabular" name="input_all_genes_stats" label="Files all_genes_stats"/>
-        <param type="data" multiple="true" format="txt" name="input_files_down" label="Files signif_down_regulated"/>   
-        <param type="data" multiple="true" format="txt" name="input_files_up" label="Files signif_up_regulated"/>
-        <param type="data" name="name_file_all_genes_stats" label="name_file_all_genes_stats" format="txt"/>
-        <param type="data" name="name_file_down" label="name_file_down" format="txt"/>
-        <param type="data" name="name_file_up" label="name_file_up" format="txt"/>
-        <param name="metadata_table" type="data" format="tabular" label="Metadata_table"/>
-        <section name="file_1" title="First file" expanded="False">
-            <param name="file_1_ref" type="select" label="reference" help="Select reference">
-                <options from_dataset="metadata_table">
-                    <column name="name" index="1"/>
-                    <column name="value" index="1"/>
-                </options>
-            </param>
-            <param name="file_1_mutant" type="select" label="mutant" help="Select mutant">
-                <options from_dataset="metadata_table">
-                    <column name="name" index="1"/>
-                    <column name="value" index="1"/>
-                </options>
-            </param>
-            <param name="up_or_down_1" type="select" label="genes significantly down or up regulated" help="Choosing between up or down expressed genes">
-                <option value="up">
-                    up
-                </option>
-                <option value="down">
-                    down
-                </option>
-                <option value="nothing">
-                    nothing
-                </option>
-            </param>
-        </section>
-        <section name="file_2" title="Second file" expanded="False">
-            <param name="file_2_ref" type="select" label="reference" help="Select reference">
-                <options from_dataset="metadata_table">
-                    <column name="name" index="1"/>
-                    <column name="value" index="1"/>
-                </options>
-            </param>
-            <param name="file_2_mutant" type="select" label="mutant" help="Select mutant">
-                <options from_dataset="metadata_table">
-                    <column name="name" index="1"/>
-                    <column name="value" index="1"/>
-                </options>
-            </param>
-            <param name="up_or_down_2" type="select" label="genes significantly down or up regulated" help="Choosing between up or down expressed genes">
-                <option value="up">
-                    up
-                </option>
-                <option value="down">
-                    down
-                </option>
-            </param>
-        </section>
-    </inputs>
-    <outputs>
-        <collection type="list" format="text" label="common_genes" name="common_genes">
-           <discover_datasets pattern="(?P&lt;name&gt;.*)" format="text" directory="common_genes"/>
-        </collection>
-        <collection type="list" format="text" label="stat_common_genes" name="stat_common_genes">
-           <discover_datasets pattern="(?P&lt;name&gt;.*)" format="text" directory="stat_common_genes"/>
-        </collection>
-    </outputs>
+<tool id="Intersection" name="Intersection" version="1.0+galaxy1" python_template_version="3.5" profile="20.09">
+<description>Presence or absence of differential expressed genes in different comparisons</description>
+<requirements>
+<requirement type="package" version="4.0">r-base</requirement>
+</requirements>
+<command detect_errors="exit_code">
+<![CDATA[ Rscript /local_tools/Intersection/intersection.R --output_path1 common_genes --output_path2 stat_common_genes --galaxy_input_files_2 '$input_files_down' --galaxy_input_files_3 '$input_all_genes_stats' --galaxy_input_files_1 '$input_files_up' --galaxy_param1 '$name_file_all_genes_stats' --galaxy_param2 '$name_file_down' --galaxy_param3 '$name_file_up' --galaxy_param4 '$metadata_table' --galaxy_input1 '$params1.ref' --galaxy_input2 '$params1.mutant' --galaxy_input3 '$params1.regulation' --galaxy_input4 '$params2.ref' --galaxy_input5 '$params2.mutant' --galaxy_input6 '$params2.regulation' ]]>
+</command>
+<inputs>
+<param type="data" multiple="true" format="tabular" name="input_all_genes_stats" label="Files all_genes_stats"/>
+<param type="data" multiple="true" format="txt" name="input_files_down" label="Files signif_down_regulated"/>
+<param type="data" multiple="true" format="txt" name="input_files_up" label="Files signif_up_regulated"/>
+<param type="data" name="name_file_all_genes_stats" label="name_file_all_genes_stats" format="txt"/>
+<param type="data" name="name_file_down" label="name_file_down" format="txt"/>
+<param type="data" name="name_file_up" label="name_file_up" format="txt"/>
+<param name="metadata_table" type="data" format="tabular" label="Metadata_table"/>
+<section name="params1" title="First Comparison" expanded="True">
+<param name="ref" type="select" label="Reference Condition" help="Select reference condition">
+<options from_dataset="metadata_table">
+<!--  Récupère les valeurs uniques de la colonne condition (index 1)  -->
+<filter type="unique_value" column="1"/>
+<filter type="add_value" column="1" value="-- Select Condition --"/>
+<column name="name" index="1"/>
+<column name="value" index="1"/>
+</options>
+</param>
+<param name="mutant" type="select" label="Mutant Condition" help="Select mutant condition">
+<options from_dataset="metadata_table">
+<filter type="unique_value" column="1"/>
+<filter type="add_value" column="1" value="-- Select Condition --"/>
+<column name="name" index="1"/>
+<column name="value" index="1"/>
+</options>
+</param>
+<param name="regulation" type="select" label="Gene regulation direction">
+<option value="up">Up-regulated</option>
+<option value="down">Down-regulated</option>
+<!--  Optionnel : ajoutez une sélection vide  -->
+<option value="">-- Select Regulation --</option>
+</param>
+</section>
+<section name="params2" title="Second Comparison" expanded="True">
+<param name="ref" type="select" label="Reference Condition" help="Select reference condition">
+<options from_dataset="metadata_table">
+<!--  Filtre les valeurs uniques de la colonne condition (index 1)  -->
+<filter type="unique_value" column="1"/>
+<filter type="add_value" column="1" value="-- Select Condition --"/>
+<column name="name" index="1"/>
+<column name="value" index="1"/>
+</options>
+</param>
+<param name="mutant" type="select" label="Mutant Condition" help="Select mutant condition">
+<options from_dataset="metadata_table">
+<filter type="unique_value" column="1"/>
+<filter type="add_value" column="1" value="-- Select Condition --"/>
+<column name="name" index="1"/>
+<column name="value" index="1"/>
+</options>
+</param>
+<param name="regulation" type="select" label="Gene regulation direction">
+<option value="up">Up-regulated</option>
+<option value="down">Down-regulated</option>
+<!--  Optionnel : ajoutez une sélection vide  -->
+<option value="">-- Select Regulation --</option>
+</param>
+</section>
+</inputs>
+<outputs>
+<collection type="list" format="txt" label="common_genes" name="common_genes">
+<discover_datasets pattern="(?P<name>.*)" format="txt" directory="common_genes"/>
+</collection>
+<collection type="list" format="txt" label="stat_common_genes" name="stat_common_genes">
+<discover_datasets pattern="(?P<name>.*)" format="txt" directory="stat_common_genes"/>
+</collection>
+</outputs>
 </tool>
