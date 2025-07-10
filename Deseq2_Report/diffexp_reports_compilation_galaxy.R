@@ -117,7 +117,7 @@ for (i in seq_along(file_list)) {
   output_file1 <- paste0("diffexp_", namee, ".html")
   
   # Rendu du document RMarkdown
-  rmarkdown::render(input = "/media/audrey/data/galaxy/tools/newTools/Deseq2_Report/diffexp.Rmd",
+  rmarkdown::render(input = "/local_tools/Deseq2_Report/diffexp.Rmd",
                     output_format = "html_document",
                     output_file  = output_file1,
                     output_dir = output_path1,
